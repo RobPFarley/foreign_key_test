@@ -1,0 +1,29 @@
+CREATE TABLE todos (
+    id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    body TEXT,
+    category INT REFERENCES categories (id) ON DELETE CASCADE
+);
+
+CREATE TABLE categories (
+    id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    description TEXT
+) AS Category; 
+
+addTodo: INSERT INTO todos (
+    title,
+    body,
+    category
+) VALUES (
+    :title,
+    :body,
+    :category
+);
+
+addCategory: INSERT INTO categories (
+    description
+) VALUES (
+    :description
+);
+
+deleteTodos: DELETE FROM todos;
